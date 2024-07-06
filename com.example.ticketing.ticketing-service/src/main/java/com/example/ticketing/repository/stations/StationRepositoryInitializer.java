@@ -14,6 +14,15 @@ public class StationRepositoryInitializer implements RepositoryInitializer<Stati
         this.initialize();
     }
 
+    @Override
+    public void initialize() {
+        final List<Station> stations = this.buildStationList();
+        this.repository.fillRepository(stations);
+
+        System.out.println("Station repository initialized with " + stations.size() + " stations");
+
+    }
+
     private List<Station> buildStationList() {
         return List.of(
                 new Station("AMI", "Amiens"),
@@ -29,10 +38,4 @@ public class StationRepositoryInitializer implements RepositoryInitializer<Stati
         );
     }
 
-    @Override
-    public void initialize() {
-        final List<Station> stations = this.buildStationList();
-        this.repository.fillRepository(stations);
-
-    }
 }

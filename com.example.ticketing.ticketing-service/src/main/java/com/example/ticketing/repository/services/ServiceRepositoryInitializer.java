@@ -34,6 +34,8 @@ public class ServiceRepositoryInitializer implements RepositoryInitializer<Servi
         );
 
         this.serviceRepository.fillRepository(services);
+
+        System.out.println("Service repository initialized with " + services.size() + " services");
     }
 
     private Service buildServiceFromLondonToParis() {

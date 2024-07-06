@@ -4,41 +4,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Booking {
+
     private final String id;
-    private final List<Ticket> tickets;
+    private final List<Passenger> passengers;
 
     private Booking(Builder builder) {
         this.id = builder.id;
-        this.tickets = builder.tickets;
+        this.passengers = builder.passengers;
     }
 
     public String getId() {
         return id;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public List<Passenger> getPassengers() {
+        return passengers;
     }
 
     public static class Builder {
         private String id;
-        private List<Ticket> tickets = new ArrayList<>();
+        private List<Passenger> passengers = new ArrayList<>();
 
         public Builder id(String id) {
             this.id = id;
             return this;
         }
 
-        public Builder ticket(Ticket ticket) {
-            if (this.tickets == null) {
-                this.tickets = new ArrayList<>();
+        public Builder passenger(Passenger passenger) {
+            if (this.passengers == null) {
+                this.passengers = new ArrayList<>();
             }
-            this.tickets.add(ticket);
+            this.passengers.add(passenger);
             return this;
         }
 
-        public Builder tickets(List<Ticket> tickets) {
-            this.tickets = tickets;
+        public Builder passengers(List<Passenger> passengers) {
+            this.passengers = passengers;
             return this;
         }
 

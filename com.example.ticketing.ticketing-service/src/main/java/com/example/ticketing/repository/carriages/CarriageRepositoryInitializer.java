@@ -19,6 +19,8 @@ public class CarriageRepositoryInitializer implements RepositoryInitializer<Carr
     public void initialize() {
         final List<Carriage> carriages = this.buildCarriages();
         this.carriageRepository.fillRepository(carriages);
+
+        System.out.println("Carriage repository initialized with " + carriages.size() + " carriages");
     }
 
     private List<Carriage> buildCarriages() {

@@ -25,6 +25,8 @@ public class RoutesRepositoryInitializer implements RepositoryInitializer<Routes
 
         final List<Route> routes = List.of(parisToLondon, parisToAmsterdam, amsterdamToBerlin);
         routesRepository.fillRepository(routes);
+
+        System.out.println("Routes repository initialized with " + routes.size() + " routes");
     }
 
     private Route createRouteLondonToParis() {
