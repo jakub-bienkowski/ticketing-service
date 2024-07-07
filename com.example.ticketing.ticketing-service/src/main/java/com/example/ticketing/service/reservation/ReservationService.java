@@ -1,5 +1,6 @@
 package com.example.ticketing.service.reservation;
 
+import com.example.ticketing.exceptions.BookingValidationException;
 import com.example.ticketing.model.booking.Booking;
 import com.example.ticketing.model.web.BookingRequest;
 import com.example.ticketing.model.web.BookingResponse;
@@ -28,8 +29,10 @@ public class ReservationService {
     public BookingResponse reserveSeats(BookingRequest request) {
          try {
              validationService.validate(request);
+         } catch (BookingValidationException e) {
+             return new BookingResponse(400, e.getDescription());
          } catch (Exception e) {
-             return new BookingResponse(500, "Internal Server Error");
+             return new BookingResponse(503, e.getMessage());
          }
 
          if (!seatAvailabilityService.areSeatsAvailable(request)) {

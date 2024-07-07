@@ -15,6 +15,8 @@ public class RoutesRepositoryInitializer implements ModelRepositoryInitializer<R
     public RoutesRepositoryInitializer(RoutesRepository routesRepository, StationRepository stationRepository) {
         this.routesRepository = routesRepository;
         this.stationRepository = stationRepository;
+
+        this.initialize();
     }
 
     @Override

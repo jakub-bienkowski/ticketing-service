@@ -85,11 +85,12 @@ public class RequestValidationService implements Validator<BookingRequest> {
 
     private void validateSeatAvailability(Service service, Seat requestedSeat) throws SeatNotExists {
         String carriageId = requestedSeat.id().substring(0, 1);
+        String seatId = requestedSeat.id().substring(1);
 
         boolean seatAvailable = service.getCarriages().stream()
                 .filter(carriage -> carriage.id().equals(carriageId))
                 .flatMap(carriage -> carriage.seats().stream())
-                .anyMatch(seat -> seat.id().equals(requestedSeat.id()) && seat.seatClass().equals(requestedSeat.seatClass()));
+                .anyMatch(seat -> seat.id().equals(seatId) && seat.seatClass().equals(requestedSeat.seatClass()));
 
         if (!seatAvailable) {
             throw new SeatNotExists("Requested seat " + requestedSeat.id() + " with class " + requestedSeat.seatClass() + " does not exist");

@@ -11,6 +11,7 @@ public class StationRepositoryInitializer implements ModelRepositoryInitializer<
 
     public StationRepositoryInitializer(StationRepository repository) {
         this.repository = repository;
+
         this.initialize();
     }
 

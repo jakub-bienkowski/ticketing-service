@@ -13,6 +13,8 @@ public class CarriageRepositoryInitializer implements ModelRepositoryInitializer
 
     public CarriageRepositoryInitializer(CarriageRepository carriageRepository) {
         this.carriageRepository = carriageRepository;
+
+        this.initialize();
     }
 
     @Override
@@ -43,12 +45,12 @@ public class CarriageRepositoryInitializer implements ModelRepositoryInitializer
                         new Seat("7", SeatClass.SECOND_CLASS),
                         new Seat("8", SeatClass.SECOND_CLASS))),
                 new Carriage("T", List.of(
-                        new Seat("11", SeatClass.SECOND_CLASS),
-                        new Seat("12", SeatClass.SECOND_CLASS),
-                        new Seat("13", SeatClass.SECOND_CLASS),
-                        new Seat("14", SeatClass.SECOND_CLASS),
-                        new Seat("15", SeatClass.FIRST_CLASS),
-                        new Seat("13", SeatClass.FIRST_CLASS))));
+                        new Seat("7", SeatClass.SECOND_CLASS),
+                        new Seat("8", SeatClass.SECOND_CLASS),
+                        new Seat("9", SeatClass.SECOND_CLASS),
+                        new Seat("10", SeatClass.SECOND_CLASS),
+                        new Seat("11", SeatClass.FIRST_CLASS),
+                        new Seat("12", SeatClass.FIRST_CLASS))));
     }
 
 }
