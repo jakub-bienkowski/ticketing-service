@@ -2,12 +2,12 @@ package com.example.ticketing.repository.routes;
 
 import com.example.ticketing.model.inventory.Route;
 import com.example.ticketing.model.inventory.Stop;
-import com.example.ticketing.repository.RepositoryInitializer;
+import com.example.ticketing.repository.ModelRepositoryInitializer;
 import com.example.ticketing.repository.stations.StationRepository;
 
 import java.util.List;
 
-public class RoutesRepositoryInitializer implements RepositoryInitializer<RoutesRepository> {
+public class RoutesRepositoryInitializer implements ModelRepositoryInitializer<RoutesRepository> {
 
     private final RoutesRepository routesRepository;
     private final StationRepository stationRepository;

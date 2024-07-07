@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Route {
+
     private final String id;
     private final List<Stop> stops;
 

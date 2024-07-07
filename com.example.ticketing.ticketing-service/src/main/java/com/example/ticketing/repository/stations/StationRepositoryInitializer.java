@@ -1,11 +1,11 @@
 package com.example.ticketing.repository.stations;
 
 import com.example.ticketing.model.inventory.Station;
-import com.example.ticketing.repository.RepositoryInitializer;
+import com.example.ticketing.repository.ModelRepositoryInitializer;
 
 import java.util.List;
 
-public class StationRepositoryInitializer implements RepositoryInitializer<StationRepository> {
+public class StationRepositoryInitializer implements ModelRepositoryInitializer<StationRepository> {
 
     final StationRepository repository;
 

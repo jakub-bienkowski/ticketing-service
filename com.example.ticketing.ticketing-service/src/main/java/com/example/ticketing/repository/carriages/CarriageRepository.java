@@ -1,13 +1,13 @@
 package com.example.ticketing.repository.carriages;
 
 import com.example.ticketing.model.inventory.Carriage;
-import com.example.ticketing.repository.Repository;
+import com.example.ticketing.repository.ModelRepository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CarriageRepository implements Repository<Carriage, String> {
+public class CarriageRepository implements ModelRepository<Carriage, String> {
 
         private final Map<String, Carriage> carriages = new HashMap<>();
 

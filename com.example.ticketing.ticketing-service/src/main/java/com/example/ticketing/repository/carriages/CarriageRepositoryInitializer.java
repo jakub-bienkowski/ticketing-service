@@ -3,11 +3,11 @@ package com.example.ticketing.repository.carriages;
 import com.example.ticketing.model.inventory.Carriage;
 import com.example.ticketing.model.inventory.Seat;
 import com.example.ticketing.model.inventory.SeatClass;
-import com.example.ticketing.repository.RepositoryInitializer;
+import com.example.ticketing.repository.ModelRepositoryInitializer;
 
 import java.util.List;
 
-public class CarriageRepositoryInitializer implements RepositoryInitializer<CarriageRepository> {
+public class CarriageRepositoryInitializer implements ModelRepositoryInitializer<CarriageRepository> {
 
     private final CarriageRepository carriageRepository;
 

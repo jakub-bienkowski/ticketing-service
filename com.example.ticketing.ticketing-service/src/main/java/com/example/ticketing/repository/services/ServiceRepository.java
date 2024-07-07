@@ -1,13 +1,13 @@
 package com.example.ticketing.repository.services;
 
 import com.example.ticketing.model.inventory.Service;
-import com.example.ticketing.repository.Repository;
+import com.example.ticketing.repository.ModelRepository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ServiceRepository implements Repository<Service, String> {
+public class ServiceRepository implements ModelRepository<Service, String> {
 
     private final Map<String, Service> services = new HashMap<>();
 

@@ -2,13 +2,13 @@ package com.example.ticketing.model.booking;
 
 import com.example.ticketing.model.inventory.Seat;
 import com.example.ticketing.model.inventory.Service;
-import com.example.ticketing.model.inventory.Stop;
+import com.example.ticketing.model.inventory.Station;
 
 public class Ticket {
 
     private final Seat seat;
-    private final Stop origin;
-    private final Stop destination;
+    private final Station origin;
+    private final Station destination;
     private final Service service;
 
     private Ticket(Builder builder) {
@@ -22,11 +22,11 @@ public class Ticket {
         return seat;
     }
 
-    public Stop getOrigin() {
+    public Station getOrigin() {
         return origin;
     }
 
-    public Stop getDestination() {
+    public Station getDestination() {
         return destination;
     }
 
@@ -36,8 +36,8 @@ public class Ticket {
 
     public static class Builder {
         private Seat seat;
-        private Stop origin;
-        private Stop destination;
+        private Station origin;
+        private Station destination;
         private Service service;
 
         public Builder seat(Seat seat) {
@@ -45,12 +45,12 @@ public class Ticket {
             return this;
         }
 
-        public Builder origin(Stop origin) {
+        public Builder origin(Station origin) {
             this.origin = origin;
             return this;
         }
 
-        public Builder destination(Stop destination) {
+        public Builder destination(Station destination) {
             this.destination = destination;
             return this;
         }

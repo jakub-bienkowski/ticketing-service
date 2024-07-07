@@ -1,7 +1,7 @@
 package com.example.ticketing.repository.services;
 
 import com.example.ticketing.model.inventory.Service;
-import com.example.ticketing.repository.RepositoryInitializer;
+import com.example.ticketing.repository.ModelRepositoryInitializer;
 import com.example.ticketing.repository.carriages.CarriageRepository;
 import com.example.ticketing.repository.routes.RoutesRepository;
 
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
 
-public class ServiceRepositoryInitializer implements RepositoryInitializer<ServiceRepository> {
+public class ServiceRepositoryInitializer implements ModelRepositoryInitializer<ServiceRepository> {
 
     private final ServiceRepository serviceRepository;
     private final RoutesRepository routesRepository;
