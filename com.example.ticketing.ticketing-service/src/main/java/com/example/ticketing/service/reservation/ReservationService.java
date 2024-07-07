@@ -32,7 +32,7 @@ public class ReservationService {
          } catch (BookingValidationException e) {
              return new BookingResponse(400, e.getDescription());
          } catch (Exception e) {
-             return new BookingResponse(503, e.getMessage());
+             return new BookingResponse(500, e.getMessage());
          }
 
          if (!seatAvailabilityService.areSeatsAvailable(request)) {
@@ -41,7 +41,7 @@ public class ReservationService {
 
          Booking bookingToSave = bookingMappingService.mapBookingRequest(request);
          Booking savedBooking = reservationRepository.add(bookingToSave);
-         return new BookingResponse(201, savedBooking.getId());
+         return new BookingResponse(201, "Booking id: " + savedBooking.getId());
     }
 
 

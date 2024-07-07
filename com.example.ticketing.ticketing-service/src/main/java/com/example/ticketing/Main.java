@@ -1,5 +1,6 @@
 package com.example.ticketing;
 
+import com.example.ticketing.controller.ConductorController;
 import com.example.ticketing.controller.ReservationController;
 import com.example.ticketing.model.inventory.Seat;
 import com.example.ticketing.model.inventory.SeatClass;
@@ -13,12 +14,15 @@ public class Main {
 
     public static void main(String[] args) {
         final AppInitializer initializer = new AppInitializer();
-        final ReservationController controller = initializer.getReservationController();
+        final ReservationController reservationController = initializer.getReservationController();
 
-        performScenario1(controller);
-        performScenario2(controller);
-        performScenario3(controller);
-        performScenario4(controller);
+        performScenario1(reservationController);
+        performScenario2(reservationController);
+        performScenario3(reservationController);
+        performScenario4(reservationController);
+
+        final ConductorController conductorController = initializer.getConductorController();
+        performConductorQueries(conductorController);
     }
 
     private static void performScenario1(ReservationController reservationController) {
@@ -63,8 +67,6 @@ public class Main {
         System.out.println("Paris to Amsterdam Message: " + bookingResponseParisToAmsterdam.body());
     }
 
-
-
     private static BookingRequest getRequestForScenario1() {
         String fromStation = "PAR";
         String toStation = "AMS";
@@ -102,8 +104,23 @@ public class Main {
         return List.of(bookingRequestLondonToParis, bookingRequestParisToAmsterdam);
     }
 
+    private static void performConductorQueries(ConductorController conductorController) {
+        // Query 1: Number of passengers boarding at London
+        Response responseBoardingLondon = conductorController.get("/passengers/boarding/LON");
+        System.out.println("Query 1: " + responseBoardingLondon.body());
 
+        // Query 2: Number of passengers leaving at Paris
+        Response responseLeavingParis = conductorController.get("/passengers/leaving/PAR");
+        System.out.println("Query 2: " + responseLeavingParis.body());
 
+        // Query 3: Number of passengers between Calais and Paris
+        Response responseBetweenCalaisParis = conductorController.get("/passengers/between?origin=CAL&dest=PAR");
+        System.out.println("Query 3: " + responseBetweenCalaisParis.body());
+
+        // Query 4: Who is sitting on chair A11 in service 5160, on December 20th in Calais
+        Response responsePassengerA11 = conductorController.get("/passengers/get?location=CAL&serviceId=5159&date=2021-04-01T08:00&seat=H1");
+        System.out.println("Query 4: " + responsePassengerA11.body());
+    }
 
 
 }

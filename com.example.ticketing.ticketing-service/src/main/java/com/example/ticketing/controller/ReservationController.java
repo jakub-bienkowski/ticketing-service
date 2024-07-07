@@ -21,7 +21,7 @@ public class ReservationController implements HttpClient {
 
     @Override
     public Response get(String url) {
-        return new BookingResponse(404, "NOT FOUND.");
+        return new BookingResponse(405, "METHOD NOT ALLOWED");
     }
 
 }

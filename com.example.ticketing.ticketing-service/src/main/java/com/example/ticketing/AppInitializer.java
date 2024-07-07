@@ -1,5 +1,6 @@
 package com.example.ticketing;
 
+import com.example.ticketing.controller.ConductorController;
 import com.example.ticketing.controller.ReservationController;
 import com.example.ticketing.repository.carriages.CarriageRepository;
 import com.example.ticketing.repository.carriages.CarriageRepositoryInitializer;
@@ -10,6 +11,7 @@ import com.example.ticketing.repository.services.ServiceRepository;
 import com.example.ticketing.repository.services.ServiceRepositoryInitializer;
 import com.example.ticketing.repository.stations.StationRepository;
 import com.example.ticketing.repository.stations.StationRepositoryInitializer;
+import com.example.ticketing.service.conductor.ConductorService;
 import com.example.ticketing.service.mapping.BookingMappingService;
 import com.example.ticketing.service.reservation.ReservationService;
 import com.example.ticketing.service.search.SearchReservationService;
@@ -19,6 +21,7 @@ import com.example.ticketing.service.validation.RequestValidationService;
 public class AppInitializer {
 
     private ReservationController reservationController;
+    private ConductorController conductorController;
 
     public AppInitializer() {
         this.initialize();
@@ -46,20 +49,29 @@ public class AppInitializer {
 
     private void initializeServices(ServiceRepository serviceRepository, ReservationRepository reservationRepository, StationRepository stationRepository) {
         final RequestValidationService requestValidationService = new RequestValidationService(serviceRepository);
-        final SearchReservationService searchReservationService = new SearchReservationService(reservationRepository);
+        final SearchReservationService searchReservationService = new SearchReservationService(reservationRepository, serviceRepository);
         final SeatAvailabilityService seatAvailabilityService = new SeatAvailabilityService(searchReservationService);
         final BookingMappingService bookingMappingService = new BookingMappingService(serviceRepository, stationRepository);
         final ReservationService reservationService = new ReservationService(reservationRepository, requestValidationService, seatAvailabilityService, bookingMappingService);
+        final ConductorService conductorService = new ConductorService(searchReservationService);
 
-        this.initializeController(reservationService);
+        this.initializeReservationController(reservationService);
+        this.initializeConductorController(conductorService);
     }
 
-
-    private void initializeController(ReservationService reservationService) {
+    private void initializeReservationController(ReservationService reservationService) {
         this.reservationController = new ReservationController(reservationService);
+    }
+
+    private void initializeConductorController(ConductorService conductorService) {
+        this.conductorController = new ConductorController(conductorService);
     }
 
     public ReservationController getReservationController() {
         return reservationController;
+    }
+
+    public ConductorController getConductorController() {
+        return conductorController;
     }
 }
